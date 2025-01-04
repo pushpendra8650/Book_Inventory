@@ -12,7 +12,7 @@ function App() {
   // Fetch book data
   useEffect(() => {
     const fetchBooks = async () => {
-      const response = await fetch('https://www.googleapis.com/books/v1/volumes?q=subject:fiction&maxResults=20');
+      const response = await fetch('https://www.googleapis.com/books/v1/volumes?q=subject:fiction&maxResults=20&key=AIzaSyBJx4qIfE20LFd41Z5nawqPepEY5TBrpvU');
       const data = await response.json();
       setBooks(data.items || []);  // Store books in the state properly
     };

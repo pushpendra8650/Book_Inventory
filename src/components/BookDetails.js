@@ -2,16 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const BookDetail = () => {
-   // access route parameters from the URL
   const { bookId } = useParams(); // Get book ID from URL
   const [book, setBook] = useState(null);
 
   useEffect(() => {
-    // Fetch detailed book info using the bookId
     const fetchBookDetails = async () => {
-      const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${bookId}`);
-      const data = await response.json();
-      setBook(data);
+      try {
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${bookId}?key=AIzaSyBJx4qIfE20LFd41Z5nawqPepEY5TBrpvU`);
+        const data = await response.json();
+        setBook(data);
+      } catch (error) {
+        console.error('Error fetching book details:', error);
+      }
     };
     fetchBookDetails();
   }, [bookId]);
